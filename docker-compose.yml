@@ -13,6 +13,7 @@ services:
       POSTGRES_PASSWORD: alpha
     volumes:
       - ./docker/pg-alpha/data:/var/lib/postgresql/data
+      - ./docker/pg-alpha/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
   kk-alpha:
     image: jboss/keycloak:15.0.2
     deploy:
@@ -49,6 +50,7 @@ services:
       POSTGRES_PASSWORD: beta
     volumes:
       - ./docker/pg-beta/data:/var/lib/postgresql/data
+      - ./docker/pg-beta/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
   kk-beta:
     image: jboss/keycloak:15.0.2
     deploy:
