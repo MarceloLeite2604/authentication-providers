@@ -1,0 +1,74 @@
+version: "3.8"
+services:
+  pg-alpha:
+    image: postgres:13.4
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: alpha
+      POSTGRES_PASSWORD: alpha
+    volumes:
+      - ./docker/pg-alpha/data:/var/lib/postgresql/data
+  kk-alpha:
+    image: jboss/keycloak:15.0.2
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+      - "8081:8080"
+      - "8787:8787"
+    environment:
+      - KEYCLOAK_USER=alpha
+      - KEYCLOAK_PASSWORD=alpha
+      - DB_VENDOR=postgres
+      - DB_ADDR=pg-alpha
+      - DB_PORT=5432
+      - DB_USER=alpha
+      - DB_PASSWORD=alpha
+      - DB_DATABASE=alpha
+      - KEYCLOAK_LOGLEVEL=INFO
+      - ROOT_LOGLEVEL=INFO
+      - WILDFLY_LOGLEVEL=INFO
+    depends_on:
+      - pg-alpha
+  pg-beta:
+    image: postgres:13.4
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: beta
+      POSTGRES_PASSWORD: beta
+    volumes:
+      - ./docker/pg-beta/data:/var/lib/postgresql/data
+  kk-beta:
+    image: jboss/keycloak:15.0.2
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+      - "8082:8080"
+      - "8788:8787"
+    environment:
+      - KEYCLOAK_USER=beta
+      - KEYCLOAK_PASSWORD=beta
+      - DB_VENDOR=postgres
+      - DB_ADDR=pg-beta
+      - DB_PORT=5432
+      - DB_USER=beta
+      - DB_PASSWORD=beta
+      - DB_DATABASE=beta
+      - KEYCLOAK_LOGLEVEL=INFO
+      - ROOT_LOGLEVEL=INFO
+      - WILDFLY_LOGLEVEL=INFO
+    depends_on:
+      - pg-beta
