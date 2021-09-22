@@ -7,7 +7,7 @@ This is a test for SAML integration between two authentication providers. First 
 - Two Keycloak services - Alpha and Beta - running locallly.
 - A realm named "Avengers" on Alpha service with two users.
 - A realm named "X-Men" on Beta service with two users.
-- An authentication page with accepts credentials from both "Avengers" and "X-Men" realms.
+- An authentication page that accepts credentials from both "Avengers" and "X-Men" realms.
 
 The following image presents the containers created by this project and how they communicate with each other.
 ![containers-created-by-the-project](https://user-images.githubusercontent.com/13152452/134371560-e32695d8-bf10-45c7-98e9-cc2f6d993c67.png)
