@@ -10,9 +10,11 @@ This is a test for SAML integration between two authentication providers. First 
 - An authentication page that accepts credentials from both "Avengers" and "X-Men" realms.
 
 The following image presents the containers created by this project and how they communicate with each other.
+
 ![containers-created-by-the-project](https://user-images.githubusercontent.com/13152452/134371560-e32695d8-bf10-45c7-98e9-cc2f6d993c67.png)
 
 And here is a representation of the services available and their addresses.
+
 ![services-available-and-addresses](https://user-images.githubusercontent.com/13152452/134372232-e9ab2795-ac88-41e6-9704-90b5061abda9.png)
 
 
